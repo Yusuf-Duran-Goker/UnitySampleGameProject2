@@ -9,6 +9,8 @@ namespace Udemy2.Movemets
     public class JumpWithRigidbody 
 {
     Rigidbody _rigidbody;
+    public bool CanJump =>_rigidbody.velocity.y != 0f;
+
     public JumpWithRigidbody (PlayerController playerController)
     {
         _rigidbody =playerController.GetComponent<Rigidbody>();
@@ -16,9 +18,8 @@ namespace Udemy2.Movemets
 
     public void TickFixed (float jumpForce) 
     {
-        if(_rigidbody.velocity.y != 0) return;
-
-    
+        if(CanJump) return;
+        
           _rigidbody.velocity = Vector3.zero;
           _rigidbody.AddForce(Vector3.up * Time.deltaTime * jumpForce);
     }
