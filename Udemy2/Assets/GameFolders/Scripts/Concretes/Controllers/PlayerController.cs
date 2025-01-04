@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Udemy2.Abstracts.Inputs;
 using Udemy2.Inputs;
+using Udemy2.Managers;
 using Udemy2.Movemets;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     IInputReader _input;
     float _horizontal;
     bool _isJump;
+    bool _isDead = false;
     
     public float MoveSpeed => _moveSpeed;
     public float MoverBoundary => _moverBoundary; 
@@ -36,7 +39,10 @@ public class PlayerController : MonoBehaviour
     
 }
 
-      void Update(){
+      void Update()
+      {
+        if(_isDead) return;
+
        _horizontal= _input.Horizontal;
 
        if (_input.isJump)
@@ -55,8 +61,19 @@ public class PlayerController : MonoBehaviour
       }
        _isJump =false;
    }
-   
+  
+  void OnTriggerEnter (Collider other)
+  {
+    EnemyController enemyController = other.GetComponent<EnemyController>();
 
+    if (enemyController != null)
+
+    {
+      _isDead = true;
+    
+      GameManager.Instance.StopGame();
+    }
+  }
 
  }
  

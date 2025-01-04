@@ -8,7 +8,7 @@ namespace Udemy2.Controllers
 {
     public class EnemyController : MonoBehaviour
  {
-    [SerializeField] float _moveSpeed = 50f;
+    [SerializeField] float _moveSpeed = 30f;
     [SerializeField] float _maxLife = 10f;
    VerticalMover _mover;
    float _currentLifeTime = 0f;
