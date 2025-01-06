@@ -9,7 +9,7 @@ namespace Udemy2.Uis
 {
     public void StartButton()
     {
-      GameManager.Instance.LoadScene();
+      GameManager.Instance.LoadScene("Game");
     }
 
     public void ExitButton()
