@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 namespace Udemy2.Managers
 {
     public class GameManager : SingletonMonoBehaviorObject<GameManager>
+
 {
+        public event System.Action OnGameStop;
     void Awake()
     {
            SingletonThisObject(this);
@@ -16,6 +18,14 @@ namespace Udemy2.Managers
     public void StopGame()
     {
        Time.timeScale = 0f;
+
+            //if (OnGameStoped != null)
+            //{
+            //    OnGameStoped();
+            //}
+            //alttaki kisa hali
+
+            OnGameStop?.Invoke();
     }
 
     public void LoadScene(string sceneName)
