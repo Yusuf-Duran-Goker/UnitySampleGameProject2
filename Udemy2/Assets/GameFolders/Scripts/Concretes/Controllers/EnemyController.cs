@@ -8,16 +8,15 @@ using UnityEngine;
 
 namespace Udemy2.Controllers
 {
-    public class EnemyController : MonoBehaviour, IEntityController
+    public class EnemyController : MyCharacterController, IEntityController
     {
-    [SerializeField] float _moveSpeed = 30f;
-    [SerializeField] float _maxLife = 10f;
-   VerticalMover _mover;
-   float _currentLifeTime = 0f;
+        
+        [SerializeField] float _maxLife = 10f;
 
-   public float MoveSpeed => _moveSpeed;      
+      VerticalMover _mover;
+        float _currentLifeTime = 0f;     
 
-   void Awake () 
+        void Awake () 
    {
     _mover = new VerticalMover (this);
    }

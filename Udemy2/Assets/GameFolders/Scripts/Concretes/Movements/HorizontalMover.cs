@@ -15,9 +15,9 @@ public class HorizontalMover : IMover
  
    public HorizontalMover (IEntityController entityController)
    {
-    _playerController = entityController;
-            //_moveSpeed =entityController.MoveSpeed;
-            //_moverBoundary = entityController.MoverBoundary;
+            _playerController = entityController;
+            _moveSpeed = entityController.MoveSpeed;
+            _moverBoundary = entityController.MoverBoundary;
         }
 
         public void FixedTick(float horizontal){

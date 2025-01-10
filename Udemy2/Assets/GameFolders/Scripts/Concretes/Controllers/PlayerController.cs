@@ -14,12 +14,11 @@ using UnityEngine.PlayerLoop;
 
 namespace Udemy2.Controllers
 {
-public class PlayerController : MonoBehaviour , IEntityController
+public class PlayerController : MyCharacterController , IEntityController
 
     {
-    [SerializeField] float _moverBoundary = 4.5f;
-     [SerializeField] float _moveSpeed = 10f;
-    [SerializeField] float _jumpForce =1500f;
+       
+        [SerializeField] float _jumpForce =1500f;
     
 
     IMover _mover;
@@ -29,8 +28,7 @@ public class PlayerController : MonoBehaviour , IEntityController
     bool _isJump;
     bool _isDead = false;
     
-    public float MoveSpeed => _moveSpeed;
-    public float MoverBoundary => _moverBoundary; 
+  
 
 
     private void Awake()

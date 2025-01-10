@@ -16,9 +16,9 @@ namespace Udemy2.Movemets
    public VerticalMover(IEntityController entityController)
    {
             _entityController = entityController;
-            //_moveSpeed = _entityController.MoveSpeed;
-    
-   }
+            _moveSpeed = _entityController.MoveSpeed;
+
+        }
    
    public void FixedTick(float vertical =1)
    {
