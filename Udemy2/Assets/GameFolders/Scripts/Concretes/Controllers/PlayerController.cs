@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Udemy2.Abstracts.Controllers;
 using Udemy2.Abstracts.Inputs;
+using Udemy2.Abstracts.Movements;
 using Udemy2.Inputs;
 using Udemy2.Managers;
 using Udemy2.Movemets;
@@ -12,16 +14,16 @@ using UnityEngine.PlayerLoop;
 
 namespace Udemy2.Controllers
 {
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour , IEntityController
 
-  {
+    {
     [SerializeField] float _moverBoundary = 4.5f;
      [SerializeField] float _moveSpeed = 10f;
     [SerializeField] float _jumpForce =1500f;
     
 
-    HorizontalMover _horizontalMover;
-    JumpWithRigidbody _jump;
+    IMover _mover;
+    IJump _jump;
     IInputReader _input;
     float _horizontal;
     bool _isJump;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
 {
-    _horizontalMover = new HorizontalMover(this);
+    _mover = new HorizontalMover(this);
     _jump = new JumpWithRigidbody(this);
     _input = new InputReader(GetComponent<PlayerInput>());
     
@@ -53,11 +55,11 @@ public class PlayerController : MonoBehaviour
   
  private void FixedUpdate()
    {
-       _horizontalMover.TickFixed(_horizontal);
+       _mover.FixedTick(_horizontal);
 
       if(_isJump)
       {
-           _jump.TickFixed(_jumpForce);
+           _jump.FixedTick(_jumpForce);
       }
        _isJump =false;
    }

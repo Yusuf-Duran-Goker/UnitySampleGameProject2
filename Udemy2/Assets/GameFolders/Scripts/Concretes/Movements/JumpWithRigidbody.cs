@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Udemy2.Abstracts.Movements;
 using Udemy2.Controllers;
 using UnityEngine;
 
 namespace Udemy2.Movemets
 {
     
-    public class JumpWithRigidbody 
+    public class JumpWithRigidbody : IJump
 {
     Rigidbody _rigidbody;
     public bool CanJump =>_rigidbody.velocity.y != 0f;
@@ -16,7 +17,7 @@ namespace Udemy2.Movemets
         _rigidbody =playerController.GetComponent<Rigidbody>();
     }
 
-    public void TickFixed (float jumpForce) 
+    public void FixedTick (float jumpForce) 
     {
         if(CanJump) return;
         

@@ -1,26 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Udemy2.Abstracts.Controllers;
+using Udemy2.Abstracts.Movements;
 using Udemy2.Controllers;
 using UnityEngine;
 
 namespace Udemy2.Movemets
 {
     
-    public class VerticalMover 
+    public class VerticalMover : IMover
 {
-    EnemyController _enemyController;
+        IEntityController _entityController;
     float _moveSpeed;
 
-   public VerticalMover(EnemyController enemyController)
+   public VerticalMover(IEntityController entityController)
    {
-    _enemyController =enemyController;
-    _moveSpeed = _enemyController.MoveSpeed;
+            _entityController = entityController;
+            //_moveSpeed = _entityController.MoveSpeed;
     
    }
    
-   public void FixTick(float vertical =1)
+   public void FixedTick(float vertical =1)
    {
-         _enemyController.transform.Translate(Vector3.back * vertical * _moveSpeed * Time.deltaTime);
+            _entityController.transform.Translate(Vector3.back * vertical * _moveSpeed * Time.deltaTime);
    }
 
 }

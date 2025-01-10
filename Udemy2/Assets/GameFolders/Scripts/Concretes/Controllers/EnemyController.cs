@@ -1,14 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Udemy2.Abstracts.Controllers;
 using Udemy2.Managers;
 using Udemy2.Movemets;
 using UnityEngine;
 
 namespace Udemy2.Controllers
 {
-    public class EnemyController : MonoBehaviour
- {
+    public class EnemyController : MonoBehaviour, IEntityController
+    {
     [SerializeField] float _moveSpeed = 30f;
     [SerializeField] float _maxLife = 10f;
    VerticalMover _mover;
@@ -33,7 +34,7 @@ namespace Udemy2.Controllers
    }
         void FixedUpdate()
   {
-   _mover.FixTick();
+   _mover.FixedTick();
   }
 
 

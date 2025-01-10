@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Udemy2.Abstracts.Controllers;
+using Udemy2.Abstracts.Movements;
 using Udemy2.Controllers;
 using UnityEngine;
 
 namespace Udemy2.Movemets{
     
-public class HorizontalMover 
+public class HorizontalMover : IMover
 {
-   PlayerController _playerController;
+   IEntityController _playerController;
    float _moveSpeed;
    float _moverBoundary;
  
-   public HorizontalMover (PlayerController playerController)
+   public HorizontalMover (IEntityController entityController)
    {
-    _playerController = playerController;
-    _moveSpeed =_playerController.MoveSpeed;
-    _moverBoundary = playerController.MoverBoundary;
-   }
-   
-   public void TickFixed(float horizontal){
+    _playerController = entityController;
+            //_moveSpeed =entityController.MoveSpeed;
+            //_moverBoundary = entityController.MoverBoundary;
+        }
+
+        public void FixedTick(float horizontal){
     
     if(horizontal == 0f) return;
 
