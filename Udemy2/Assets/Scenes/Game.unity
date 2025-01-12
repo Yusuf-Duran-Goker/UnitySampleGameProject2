@@ -563,9 +563,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2174905860342144046, guid: 33181d9ff0cabb647a9a2793fc6c7ca2, type: 3}
-      propertyPath: _enemyPrefab
+      propertyPath: _enemyPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174905860342144046, guid: 33181d9ff0cabb647a9a2793fc6c7ca2, type: 3}
+      propertyPath: _enemyPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 2416920030713955591, guid: 9769a0faf68c272468bb67d1abcf6d19, type: 3}
+      objectReference: {fileID: 7723319567031505983, guid: 3889393e5f17ca54abe5d492846b26c4, type: 3}
+    - target: {fileID: 2174905860342144046, guid: 33181d9ff0cabb647a9a2793fc6c7ca2, type: 3}
+      propertyPath: _enemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 2252193899582750683, guid: 7492653489eaf7d42b69a8faee9dd394, type: 3}
     - target: {fileID: 4417735606860036655, guid: 33181d9ff0cabb647a9a2793fc6c7ca2, type: 3}
       propertyPath: m_Name
       value: '[EnemyManager]'
@@ -644,6 +652,10 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2353222893111080874, guid: da084c047acf17e4b8dbd69656fba050, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f99c2f606e487bd4ba7c619b09a10f39, type: 2}
     - target: {fileID: 6081578772338732804, guid: da084c047acf17e4b8dbd69656fba050, type: 3}
       propertyPath: m_Name
       value: Floor1
@@ -758,13 +770,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 468985175645247868, guid: 5d90c3f9e96494e46bf7bc6435783a2e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a7a35a310f4bf234099e346d4c063b79, type: 2}
     - target: {fileID: 4659869406582531487, guid: 5d90c3f9e96494e46bf7bc6435783a2e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4659869406582531487, guid: 5d90c3f9e96494e46bf7bc6435783a2e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7249210790558351742, guid: 5d90c3f9e96494e46bf7bc6435783a2e, type: 3}
       propertyPath: m_LocalPosition.x
