@@ -1,5 +1,3 @@
-
-using System.Collections;
 using System.Collections.Generic;
 using Udemy2.Abstracts.Utilities;
 using Udemy2.Controllers;
@@ -10,16 +8,18 @@ namespace Udemy2.Managers
 {
     public class EnemyManager : SingletonMonoBehaviorObject<EnemyManager>
     {
-        [SerializeField] float _addDeleteTime = 50f;
-        [SerializeField] EnemyController[] _enemyPrefabs;
+        [SerializeField] private float _addDelayTime = 50f;
+        [SerializeField] private EnemyController[] _enemyPrefabs;
 
-      Dictionary<EnemyEnum,Queue<EnemyController>>  _enemies = new  Dictionary<EnemyEnum,Queue<EnemyController>>(); 
+        private Dictionary<EnemyEnum, Queue<EnemyController>> _enemies = new Dictionary<EnemyEnum, Queue<EnemyController>>();
+        private float _moveSpeed;
 
-      public float AddDeleyTime => _addDeleteTime;
-
+        public float AddDelayTime => _addDelayTime;
         public int Count => _enemyPrefabs.Length;
 
-        void Awake()
+        public float AddDeleyTime => _addDelayTime;
+
+        private void Awake()
         {
             SingletonThisObject(this);
         }
@@ -31,21 +31,19 @@ namespace Udemy2.Managers
 
         private void InitializePool()
         {
-            for (int i = 0; i <_enemyPrefabs.Length; i++)
+            for (int i = 0; i < _enemyPrefabs.Length; i++)
             {
-                  Queue<EnemyController> enemyControllers =new Queue<EnemyController>();
+                Queue<EnemyController> enemyControllers = new Queue<EnemyController>();
 
-             for (int j = 0; j < 10; j++)
-             {
-                EnemyController newEnemy = Instantiate(_enemyPrefabs[i]); 
-                newEnemy.gameObject.SetActive(false);
-                newEnemy.transform.parent = this.transform;
-                enemyControllers.Enqueue(newEnemy);
-               
-             }
-             _enemies.Add((EnemyEnum)i,enemyControllers);
+                for (int j = 0; j < 10; j++)
+                {
+                    EnemyController newEnemy = Instantiate(_enemyPrefabs[i]);
+                    newEnemy.gameObject.SetActive(false);
+                    newEnemy.transform.parent = this.transform;
+                    enemyControllers.Enqueue(newEnemy);
+                }
+                _enemies.Add((EnemyEnum)i, enemyControllers);
             }
-          
         }
 
         public void SetPool(EnemyController enemyController)
@@ -53,7 +51,7 @@ namespace Udemy2.Managers
             enemyController.gameObject.SetActive(false);
             enemyController.transform.parent = this.transform;
 
-            Queue<EnemyController> enemyControllers = _enemies [enemyController.EnemyType];
+            Queue<EnemyController> enemyControllers = _enemies[enemyController.EnemyType];
             enemyControllers.Enqueue(enemyController);
         }
 
@@ -65,16 +63,25 @@ namespace Udemy2.Managers
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    EnemyController newEnemy = Instantiate (_enemyPrefabs[(int) enemyType]);
-                    enemyControllers.Enqueue (newEnemy);
+                    EnemyController newEnemy = Instantiate(_enemyPrefabs[(int)enemyType]);
+                    newEnemy.gameObject.SetActive(false);
+                    enemyControllers.Enqueue(newEnemy);
                 }
-                
-
             }
 
-            return enemyControllers.Dequeue();
+            EnemyController enemyController = enemyControllers.Dequeue();
+            enemyController.SetMoveSpeed(_moveSpeed);
+            return enemyController;
         }
-        
-    }
 
+        public void SetMoveSpeed(float moveSpeed)
+        {
+            _moveSpeed = moveSpeed;
+        }
+
+        public void SetAddDelayTime(float addDelayTime)
+        {
+            _addDelayTime = addDelayTime;
+        }
+    }
 }

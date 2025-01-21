@@ -11,41 +11,44 @@ namespace Udemy2.Controllers
 {
     public class EnemyController : MyCharacterController, IEntityController
     {
-        
         [SerializeField] float _maxLife = 10f;
         [SerializeField] EnemyEnum _enemyEnum;
 
-      VerticalMover _mover;
-        float _currentLifeTime = 0f;   
-        public EnemyEnum  EnemyType => _enemyEnum;   
+        private VerticalMover _mover;
+        private float _currentLifeTime = 0f;
 
-        void Awake () 
-   {
-    _mover = new VerticalMover (this);
-   }
- 
-   void Update() 
-   {
-       _currentLifeTime += Time.deltaTime;
+        public EnemyEnum EnemyType => _enemyEnum;
 
-       if (_currentLifeTime > _maxLife)
-       {
-        _currentLifeTime = 0f;
-        KillYourself();
-       }
-   }
+        void Awake()
+        {
+            _mover = new VerticalMover(this);
+        }
+
+        void Update()
+        {
+            _currentLifeTime += Time.deltaTime;
+
+            if (_currentLifeTime > _maxLife)
+            {
+                _currentLifeTime = 0f;
+                KillYourself();
+            }
+        }
+
         void FixedUpdate()
-  {
-   _mover.FixedTick();
-  }
+        {
+            _mover.FixedTick();
+        }
 
+        private void KillYourself()
+        {
+            EnemyManager.Instance.SetPool(this);
+        }
 
- private void KillYourself()
-  {
-           EnemyManager.Instance.SetPool(this);
-  }
-
-    
- }
+        public void SetMoveSpeed(float moveSpeed )
+        {
+            if (moveSpeed< _moveSpeed) return;
+                _moveSpeed = moveSpeed;
+        }
+    }
 }
-

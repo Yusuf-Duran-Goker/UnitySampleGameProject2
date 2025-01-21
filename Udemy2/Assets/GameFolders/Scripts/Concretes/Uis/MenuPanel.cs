@@ -6,16 +6,19 @@ using UnityEngine;
 namespace Udemy2.Uis
 {
     public class MenuPanel : MonoBehaviour
-{
-    public void StartButton()
     {
-      GameManager.Instance.LoadScene("Game");
-    }
+        public void SelectAndStartButton(int index)
+        {
+            
+            GameManager.Instance.DifficultyIndex = index; // Zorluk seviyesini ayarla
+            GameManager.Instance.LoadScene("Game"); // Oyunu başlat
 
-    public void ExitButton()
-    {
-       GameManager.Instance.ExitGame();
+        }
+
+        public void ExitButton()
+        {
+            GameManager.Instance.ExitGame();
+        }
     }
-}
 
 }
