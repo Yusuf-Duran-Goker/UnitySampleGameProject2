@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Zemin
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Zemin
+    uniqueID: 2677156757
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Objeler
+    uniqueID: 1543288703
+    locked: 0
+  - name: Efektler
+    uniqueID: 1735968457
+    locked: 0
+  - name: Player
+    uniqueID: 1932439643
     locked: 0

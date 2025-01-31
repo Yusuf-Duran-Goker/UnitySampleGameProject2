@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Udemy2.Abstracts.Utilities;
 using Udemy2.ScriptableObjects;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace Udemy2.Managers
