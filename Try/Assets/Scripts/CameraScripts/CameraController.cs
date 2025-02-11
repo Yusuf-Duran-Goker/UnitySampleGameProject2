@@ -24,11 +24,11 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        halfYukseklik = halfYukseklik* Camera.main.orthographicSize;
+        halfYukseklik = Camera.main.orthographicSize;
         
-        halfGenislik = halfYukseklik* Camera.main.aspect;
 
-       sonPos = transform.position;
+        halfGenislik = halfYukseklik * Camera.main.aspect;
+       
     }
 
     private void Update ()
@@ -39,8 +39,7 @@ public class CameraController : MonoBehaviour
 
             Mathf.Clamp(player.transform.position.x,boundsBox.bounds.min.x+halfGenislik,boundsBox.bounds.max.x-halfGenislik),
 
-            Mathf.Clamp(player.transform.position.y,boundsBox.bounds.min.y+halfYukseklik,
-            boundsBox.bounds.max.y-halfYukseklik),
+            Mathf.Clamp(player.transform.position.y,boundsBox.bounds.min.y +halfYukseklik,boundsBox.bounds.max.y-halfYukseklik),
 
             transform.position.z);
         }
